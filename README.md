@@ -37,8 +37,6 @@ Hospital readmissions are a major concern for healthcare providers, leading to f
   2. Engineer new features (e.g., medication adherence proxies, follow-up frequency).  
   3. Handle potential class imbalance.  
 
-> **Note**: Make sure you have permission and follow data-use guidelines when using or sharing this dataset.
-
 ---
 
 ## Methodology
