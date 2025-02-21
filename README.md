@@ -65,12 +65,6 @@ Hospital readmissions are a major concern for healthcare providers, leading to f
   - Select clusters of interest  
   - View top risk features  
   - Compare potential interventions  
-
----
-
-## License
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this software, as long as the original license is included.
-
 ---
 
 ## Contact
