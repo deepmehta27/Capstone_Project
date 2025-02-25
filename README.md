@@ -30,7 +30,7 @@ Hospital readmissions are a major concern for healthcare providers, leading to f
 
 ## Dataset
 - **Name:** Diabetes 130-US Hospitals  
-- **Source:** [UCI Machine Learning Repository]([https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospital+discharge+data+Se]  
+- **Source:** [UCI Machine Learning Repository]([https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008]  
 - **Description:** Contains over 100,000 hospital admissions for patients with diabetes from 130 hospitals in the U.S. from 1999–2008.  
 - **Preprocessing Steps:**  
   1. Remove or impute missing values where possible.  
