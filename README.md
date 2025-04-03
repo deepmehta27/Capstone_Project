@@ -1,11 +1,22 @@
 # Optimizing Hospital Readmission Reduction Using Patient Clustering
 
-An unsupervised learning approach to identify high-risk patient subgroups, reduce hospital readmissions, and provide actionable insights for healthcare professionals.
+**Author:** Deep Manish Mehta  
+**Date:** April 29, 2025  
+**Course:** Capstone Project – MS in Data Science, Pace University
 
 ---
 
 ## Project Overview
-Hospital readmissions are a major concern for healthcare providers, leading to financial burdens and reduced patient satisfaction. Traditional predictive models often focus on whether a readmission will occur, without explaining **why** it happens. This project uses **HDBSCAN** clustering and **explainable AI (SHAP)** to discover and interpret **hidden patient subgroups** at high risk of readmission. By exploring these subgroups, hospitals can implement targeted interventions that address the core causes of readmissions.
+
+Hospital readmissions pose significant challenges by driving up healthcare costs and reducing patient satisfaction. Traditional predictive models often lack explainability regarding the underlying causes of readmissions. This project introduces an innovative unsupervised learning framework that not only identifies hidden, high-risk patient subgroups but also explains the key factors driving these outcomes. The ultimate goal is to inform targeted interventions that can reduce readmission rates.
+
+---
+
+## Project Goal
+
+- **Develop an unsupervised learning framework** to cluster patients based on healthcare utilization and clinical severity.
+- **Transform clustering results** into actionable insights using explainable AI techniques.
+- **Support strategic decision-making** for reducing hospital readmissions through targeted interventions.
 
 ---
 
@@ -35,38 +46,43 @@ Hospital readmissions are a major concern for healthcare providers, leading to f
 - **Preprocessing Steps:**  
   1. Remove or impute missing values where possible.  
   2. Engineer new features (e.g., medication adherence proxies, follow-up frequency).  
-  3. Handle potential class imbalance.  
+  3. Handle potential class imbalance.
 
 ---
-
 ## Methodology
-1. **Data Preprocessing**  
-   - Feature engineering (e.g., _“lab result volatility”_ to capture the stability of lab values)  
-   - Handling missing data and outliers  
 
-2. **Clustering with HDBSCAN**  
-   - Identify variable-density clusters  
-   - Determine hyperparameters (e.g., `min_cluster_size`) based on silhouette scores and domain knowledge  
+1. **Data Cleaning & Preprocessing**
+   - Replace missing values and remove duplicates.
+   - Drop irrelevant or redundant columns.
+   - Encode categorical variables and engineer additional features such as total visits, outpatient ratio, and severity score.
 
-3. **Explainability with SHAP**  
-   - Gain insight into each cluster’s risk factors  
-   - Highlight major drivers of readmissions (e.g., medication non-adherence)  
+2. **Exploratory Data Analysis (EDA)**
+   - Visualize data distributions and relationships (e.g., readmission status, age groups, race, gender).
+   - Create correlation matrices to understand feature interactions.
 
-4. **Dashboard Development**  
-   - Implement an interactive dashboard using **Plotly** and **Dash**  
-   - Visualize clusters, SHAP values, and subgroup-level insights  
+3. **Clustering with HDBSCAN**
+   - Scale features and perform PCA for dimensionality reduction.
+   - Apply HDBSCAN to identify patient subgroups, handling noise points appropriately.
+
+4. **Interpretation with SHAP**
+   - Convert unsupervised clusters into binary targets.
+   - Train Random Forest classifiers in a one-vs-rest framework.
+   - Use SHAP analysis to determine key features driving each patient subgroup.
+
+5. **Model Evaluation**
+   - Validate clusters with cross-validation scores, train/test accuracies, and silhouette scores.
+   - Generate detailed profiles for each cluster (Low Engagement, Moderate Utilization, High Risk).
 
 ---
 
-## Results & Dashboard
-- After clustering, patients will be segmented into meaningful groups.  
-- **SHAP analysis** will detail which features are driving higher readmission probabilities.  
-- In the **dashboard**, clinicians and stakeholders can:  
-  - Select clusters of interest  
-  - View top risk features  
-  - Compare potential interventions  
----
+## Quick Start
 
-## Contact
-- **Author:** Deep Manish Mehta  
-- **GitHub:** [@deepmehta27](https://github.com/deepmehta27)  
+To begin, ensure all required libraries are installed:
+
+```python
+!pip install pandas numpy matplotlib seaborn scikit-learn hdbscan shap
+```
+
+Then, load and preprocess the data as described. For full details, refer to the subsequent cells in this notebook.
+
+---
