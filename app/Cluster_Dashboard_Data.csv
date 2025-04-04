@@ -1,0 +1,5 @@
+,cluster_label,cluster_name,cv_score,train_acc,test_acc,top_features,total_patients
+0,1,Low Engagement,0.9136,0.9351,0.8793,[],260
+1,-1,Noise,0.9412,0.9437,0.9655,[],17
+2,2,Moderate Utilization,0.9827,0.9827,0.9828,[],5
+3,0,High Risk,1.0,1.0,0.931,[],7
