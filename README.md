@@ -2,87 +2,132 @@
 
 **Author:** Deep Manish Mehta  
 **Date:** April 29, 2025  
-**Course:** Capstone Project – MS in Data Science, Pace University
+**Course:** Capstone Project – MS in Data Science, Pace University  
 
 ---
 
-## Project Overview
+## 🧠 Project Overview
 
-Hospital readmissions pose significant challenges by driving up healthcare costs and reducing patient satisfaction. Traditional predictive models often lack explainability regarding the underlying causes of readmissions. This project introduces an innovative unsupervised learning framework that not only identifies hidden, high-risk patient subgroups but also explains the key factors driving these outcomes. The ultimate goal is to inform targeted interventions that can reduce readmission rates.
-
----
-
-## Project Goal
-
-- **Develop an unsupervised learning framework** to cluster patients based on healthcare utilization and clinical severity.
-- **Transform clustering results** into actionable insights using explainable AI techniques.
-- **Support strategic decision-making** for reducing hospital readmissions through targeted interventions.
+Hospital readmissions pose significant challenges by increasing healthcare costs and reducing patient satisfaction. Traditional predictive models often fail to explain why patients are readmitted. This project introduces an **unsupervised learning framework** that not only identifies **hidden, high-risk patient subgroups**, but also explains the **key risk drivers** behind those clusters using **explainable AI (SHAP)**.
 
 ---
 
-## Objectives
+## 🎯 Project Goal
+
+- **Cluster patients** based on health service utilization and clinical features.
+- **Explain** cluster-level patterns that correlate with readmission risks.
+- **Enable intervention planning** through a clinician-friendly interactive dashboard.
+
+---
+
+## ✅ Objectives
+
 1. **Perform Exploratory Data Analysis (EDA)**  
-   - Clean and preprocess the Diabetes 130-US Hospitals dataset.  
-   - Engineer features capturing medication adherence, lab result volatility, and follow-up compliance.
+   Understand distributions, demographics, and readmission patterns.
 
-2. **Cluster Patients Using HDBSCAN**  
-   - Identify dense regions of similar patients without needing a predefined number of clusters.  
-   - Validate cluster quality using silhouette scores and domain expertise.
+2. **Feature Engineering & Clustering**  
+   Use HDBSCAN to group similar patients based on engineered features.
 
-3. **Explain Risk Drivers with SHAP**  
-   - Quantify the contribution of each feature (e.g., missed appointments) to higher readmission rates.  
-   - Provide interpretable insights for clinicians and decision-makers.
+3. **Cluster Interpretation with SHAP**  
+   Apply explainable AI to derive risk factors within each cluster.
 
-4. **Build an Interactive Dashboard**  
-   - Enable data exploration and cluster analysis.  
-   - Allow clinicians to visually investigate patient subgroups and potential interventions.
+4. **Interactive Dashboard**  
+   Enable stakeholders to explore clusters, metrics, and patient profiles.
 
 ---
 
-## Dataset
-- **Name:** Diabetes 130-US Hospitals  
-- **Source:** [UCI Machine Learning Repository]([https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008]  
-- **Description:** Contains over 100,000 hospital admissions for patients with diabetes from 130 hospitals in the U.S. from 1999–2008.  
-- **Preprocessing Steps:**  
-  1. Remove or impute missing values where possible.  
-  2. Engineer new features (e.g., medication adherence proxies, follow-up frequency).  
-  3. Handle potential class imbalance.
+## 📊 Dataset
 
----
-## Methodology
-
-1. **Data Cleaning & Preprocessing**
-   - Replace missing values and remove duplicates.
-   - Drop irrelevant or redundant columns.
-   - Encode categorical variables and engineer additional features such as total visits, outpatient ratio, and severity score.
-
-2. **Exploratory Data Analysis (EDA)**
-   - Visualize data distributions and relationships (e.g., readmission status, age groups, race, gender).
-   - Create correlation matrices to understand feature interactions.
-
-3. **Clustering with HDBSCAN**
-   - Scale features and perform PCA for dimensionality reduction.
-   - Apply HDBSCAN to identify patient subgroups, handling noise points appropriately.
-
-4. **Interpretation with SHAP**
-   - Convert unsupervised clusters into binary targets.
-   - Train Random Forest classifiers in a one-vs-rest framework.
-   - Use SHAP analysis to determine key features driving each patient subgroup.
-
-5. **Model Evaluation**
-   - Validate clusters with cross-validation scores, train/test accuracies, and silhouette scores.
-   - Generate detailed profiles for each cluster (Low Engagement, Moderate Utilization, High Risk).
+- **Name:** Diabetes 130-US Hospitals
+- **Source:** [UCI Repository](https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008)
+- **Description:** It contains 100,000+ hospital records for diabetic patients from 130 U.S. hospitals (1999–2008).
+- **Preprocessing Steps:**
+  - Dropped high-missing-value columns (e.g., weight).
+  - Encoded categorical variables (`age`, `race`, etc.).
+  - Engineered features: number of medications, inpatient visits, outpatient ratio, etc.
 
 ---
 
-## Quick Start
+## 🚀 How to Run the Project
 
-To begin, ensure all required libraries are installed:
+### 📦 1. Install Dependencies
 
-```python
-!pip install pandas numpy matplotlib seaborn scikit-learn hdbscan shap
+Install all required packages in a virtual environment:
+
+```bash
+pip install -r requirements.txt
 ```
 
-Then, load and preprocess the data as described. For full details, refer to the subsequent cells in this notebook.
+> If you face NumPy 2.x issues, run:
+> ```bash
+> pip install numpy==1.26.4
+> ```
+
+---
+
+### 🧪 2. Run the Notebook (for analysis & modeling)
+
+Open and run the notebook:
+
+```bash
+jupyter notebook DeepMehta_Capstone_Project.ipynb
+```
+
+This notebook includes:
+- Data cleaning
+- Feature engineering
+- Clustering with HDBSCAN
+- SHAP interpretation
+- Data export to `clustered_data.csv`
+
+---
+
+### 📊 3. Launch the Dashboard
+
+After generating `clustered_data.csv`, run the dashboard:
+
+```bash
+streamlit run dashboard_app.py
+```
+
+This will launch a **local web app** where:
+- You can explore each patient cluster.
+- Understand key risk features (from SHAP).
+- Filter patients by risk level, medication count, and more.
+
+---
+
+## 📈 Methods Used
+
+| Step                     | Technique / Tool             |
+|--------------------------|------------------------------|
+| EDA                      | Seaborn, Matplotlib, Pandas  |
+| Clustering               | HDBSCAN                      |
+| Feature Scaling          | StandardScaler               |
+| Explainability           | SHAP (TreeExplainer)         |
+| Dashboard                | Streamlit                    |
+
+---
+
+## 📚 Literature Support
+
+Refer to `Literature_Review.pdf` for key academic papers and supporting research related to:
+- Readmission reduction strategies
+- Unsupervised patient profiling
+- Clinical explainability with machine learning
+
+---
+
+## ✅ Final Notes
+
+- Clustering is **unsupervised**, so SHAP was applied using a **Random Forest (One-vs-Rest)** on cluster labels.
+- The SHAP visualizations and scores are used both in analysis and dashboard (`shap_values.pkl`).
+
+---
+
+## 👤 Author
+
+**Deep Manish Mehta**  
+Data Science Capstone | Pace University | April 2025
 
 ---
