@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 # Elegant Config
 st.set_page_config(page_title="🧬 Patient Cluster Explorer", layout="wide", page_icon="📊")
@@ -17,7 +18,12 @@ st.markdown("Explore clusters, patient stats, feature distributions, and readmis
 # Load dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv("clustered_data.csv")
+    base_dir = os.path.dirname(__file__)
+    data_path = os.path.join(base_dir, "clustered_data.csv")
+    if not os.path.exists(data_path):
+        st.error(f"Data file not found at {data_path}")
+        return pd.DataFrame()
+    df = pd.read_csv(data_path)
     cluster_labels = {
         0: "High Risk",
         1: "Low Engagement",
